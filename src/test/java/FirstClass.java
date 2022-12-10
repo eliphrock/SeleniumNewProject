@@ -14,6 +14,9 @@ public class FirstClass {
         // created webdriver ,we can automate web application
 
         driver.get("https://www.techproeducation.com");
+
+        //  write your test cases
+        driver.get("https://www.amazon.com");
     }
 
 }
