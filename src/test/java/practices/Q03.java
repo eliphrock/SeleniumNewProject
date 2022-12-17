@@ -72,9 +72,11 @@ public class Q03 {
         driver.findElement(By.id("pwd")).sendKeys("John.123");
 
         // Click on Submit Button
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-    }
+      //  driver.findElement(By.xpath("//button[@type='submit']")).click();
+        WebElement submitButton=driver.findElement(By.xpath("//button[@type='submit']"));
+        submitButton.submit();
 
+    }
         // Close the browser by using @After annotation
         @After
       public void tearDown() {
