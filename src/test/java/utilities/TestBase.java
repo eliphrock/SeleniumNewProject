@@ -20,8 +20,7 @@ public abstract class TestBase {
         driver.get("https://testcenter.techproeducation.com/index.php?page=dropdown");
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
+//    @After
+//    public void tearDown() {
+//        driver.quit();
     }
-}
