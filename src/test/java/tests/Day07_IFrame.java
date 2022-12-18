@@ -20,8 +20,8 @@ public class Day07_IFrame extends TestBase {
         Assert.assertTrue(header.contains("Editor"));
 //        NOTE: textbox is in the iframe so we have to switch to teh iframe
         driver.switchTo().frame(0);//index
-        driver.switchTo().frame("mce_0_ifr");//id or name frame-----PREFERRED ONE
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='mce_0_ifr']")));//webelement locate
+//        driver.switchTo().frame("mce_0_ifr");//id or name frame-----PREFERRED ONE
+//        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='mce_0_ifr']")));//webelement locate
 //        Locate the text box
         WebElement box = driver.findElement(By.xpath("//p"));
 //        Delete the text in the text box
