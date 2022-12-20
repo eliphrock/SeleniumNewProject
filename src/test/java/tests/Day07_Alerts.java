@@ -11,18 +11,18 @@ public class Day07_Alerts extends TestBase {
 //        acceptAlert() => click on the first alert,
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
         driver.findElement(By.xpath("//button[@onclick='jsAlert()']")).click();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 //         verify the text “I am a JS Alert” ,
         String actualAlertText = driver.switchTo().alert().getText();
         Assert.assertEquals("I am a JS Alert", actualAlertText);
 
 //        click OK ,
         driver.switchTo().alert().accept();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 //        and Verify “You successfully clicked an alert”
         String actualResult = driver.findElement(By.id("result")).getText();
         Assert.assertEquals("You successfully clicked an alert", actualResult);
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
     }
 

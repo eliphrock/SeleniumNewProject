@@ -16,46 +16,46 @@ public class Day07_WindowHandle1 extends TestBase {
         String window1Text = driver.findElement(By.xpath("//h3")).getText();
         Assert.assertEquals("Opening a new window",window1Text);
 //        Then user verifies the title of the page is “The Internet”
-        Assert.assertEquals("The Internet",driver.getTitle());
-//        getting the window 1 handle(unique page id)
-        String windowHandle=driver.getWindowHandle();
-        System.out.println(windowHandle);
-
+        Assert.assertEquals("The Internet", driver.getTitle());
+//        GETTING THE WINDOW 1 HANDLE(UNIQUE PAGE ID)
+        String window1Handle = driver.getWindowHandle(); //RETURNS THE CURRENT WINDOW ID
+        System.out.println(window1Handle);
 //        When user clicks on the “Click Here” button
         driver.findElement(By.linkText("Click Here")).click();
-//        Then user verifies the new window title is “New Window”
-//        We do testing in a new window so we must switch to that window
-//        as of now 2 windows open,use getwindowhandles()to get both ids
-        Set<String> getWindowHandles=driver.getWindowHandles();
-        System.out.println(getWindowHandles);
-        for(String eachHandle : getWindowHandles){//looping through the windows
-            if(!eachHandle.equals(windowHandle)){//if we are not in windows 1 (means windows 2)
+//        WE DO TESTING IN A NEW WINDOW, SO WE MUST SWITCH TO THAT WINDOW
+//        AS OF NOW 2 WINDOWS OPEN. USE getWindowHandles() TO GET BOTH IDs
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        System.out.println(allWindowHandles);
+        for (String eachHandle : allWindowHandles){//looping through the windows
+            if (!eachHandle.equals(window1Handle)){//if we are not in windows 1 (means windows 2)
                 driver.switchTo().window(eachHandle);//then switch the window 2
             }
         }
-//        at this point driver is switched to windows 2
-        String window2Handle=driver.getWindowHandle(); //window 2
-//        Then user verifies the text:  “New Window”
-        String window2Text=driver.findElement(By.xpath("//h3")).getText();
-        Assert.assertEquals("New Window",window2Text);
+//        AT THIS POINT DRIVER IS SWITCHED TO WINDOWS 2
 
+        String window2Handle = driver.getWindowHandle();// WINDOW 2 ID.
+//        Then user verifies the text:  “New Window”
+//        Then user verifies the new window title is “New Window”
+        Assert.assertEquals("New Window",driver.getTitle());
+
+        String window2Text = driver.findElement(By.xpath("//h3")).getText();
+        Assert.assertEquals("New Window",window2Text);
         Thread.sleep(5000);
 //        When user goes back to the previous window and then verifies the title : “The Internet”
-        driver.switchTo().window(windowHandle);//switched window 1
-        Assert.assertEquals("The Internet",driver.getTitle());
-
+        driver.switchTo().window(window1Handle);//switches window 1
+//        Then user verifies the title of the page is “The Internet”
+        Assert.assertEquals("The Internet", driver.getTitle());
+        Thread.sleep(5000);
 //        Switch back to window 2
         driver.switchTo().window(window2Handle);
         Thread.sleep(5000);
 //        Switch back to window 1
-        driver.switchTo().window(windowHandle);
+        driver.switchTo().window(window1Handle);
         Thread.sleep(5000);
         //        Switch back to window 2
         driver.switchTo().window(window2Handle);
         Thread.sleep(5000);
 //        Switch back to window 1
-        driver.switchTo().window(windowHandle);
-
-
+        driver.switchTo().window(window1Handle);
     }
 }
