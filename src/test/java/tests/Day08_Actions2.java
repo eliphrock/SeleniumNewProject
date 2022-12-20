@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,8 @@ public class Day08_Actions2 extends TestBase {
         driver.findElement(By.linkText("Account")).click();
 
         //Then verify the page title contains "Your Account"
+        Assert.assertTrue(driver.getTitle().contains("Your Account"));
+        //DONE
     }
 
 
