@@ -6,14 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
-public class Day09_DragAndDrop extends TestBase {
+public class Day09_Actions4 extends TestBase {
 
     @Test
     public void dragAndDropTest(){
         driver.get("https:/jqueryui.com/droppable/");
 
 //    and user moves the target element(drag me to my target) on to destination
-
 
         //below elements are in the iframe so switch to iframe first
         driver.switchTo().frame(0);//switch to first iframe
@@ -24,7 +23,6 @@ public class Day09_DragAndDrop extends TestBase {
         Actions actions=new Actions(driver);
         actions.dragAndDrop(source,target).perform();
     }
-
     /*
     when test fail
     1-check locater
@@ -38,7 +36,6 @@ public class Day09_DragAndDrop extends TestBase {
 
 //    and user moves the target element(drag me to my target) on to destination
 
-
         //below elements are in the iframe so switch to iframe first
         driver.switchTo().frame(0);//switch to first iframe
         WebElement source=driver.findElement(By.id("draggable"));
@@ -47,6 +44,24 @@ public class Day09_DragAndDrop extends TestBase {
         //  user actions class to move source into target
         Actions actions=new Actions(driver);
        actions.clickAndHold(source).moveToElement(target).build().perform();
+    }
+
+    @Test
+    public void moveByOffsetTest(){
+        driver.get("https:/jqueryui.com/droppable/");
+
+//    and user moves the target element(drag me to my target) on to destination
+
+        //below elements are in the iframe so switch to iframe first
+        driver.switchTo().frame(0);//switch to first iframe
+        WebElement source=driver.findElement(By.id("draggable"));
+        WebElement target=driver.findElement(By.id("droppable"));
+
+        //  user actions class to move source into target
+        Actions actions=new Actions(driver);
+        actions.clickAndHold(source).moveByOffset(160,30).build().perform();
+
+        actions.dragAndDropBy(source,160,30).perform();
     }
 
 }
