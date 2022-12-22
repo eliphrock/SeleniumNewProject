@@ -23,5 +23,16 @@ public class Day09_FileDownloadTest extends TestBase {
         boolean isDownloaded= Files.exists(Paths.get(filePath));
         Assert.assertTrue(isDownloaded);
 
+
+        //b10 all test cases, code.docx
+
+        driver.findElement(By.linkText("b10 all test cases, code.docx")).click();
+        Thread.sleep(2000);
+        //then verify if the file download successfully
+        String homeDirectory1=System.getProperty("user.home");
+        String filePath1=homeDirectory+"/Downloads/b10 all test cases, code.docx";
+        boolean isDownloaded1= Files.exists(Paths.get(filePath1));
+        Assert.assertTrue(isDownloaded1);
+
     }
 }

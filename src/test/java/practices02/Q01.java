@@ -1,0 +1,42 @@
+package practices02;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import utilities.TestBase;
+
+import static org.junit.Assert.assertTrue;
+
+public class Q01 extends TestBase {
+
+    @Test
+    public void test(){
+
+        //Go to url : https://phptravels.com/demo/
+
+        driver.get("https://phptravels.com/demo/");
+
+        //Fill the form
+
+        driver.findElement(By.name("first_name")).sendKeys("John");
+        driver.findElement(By.name("last_name")).sendKeys("Doe");
+        driver.findElement(By.name("business_name")).sendKeys("QA Engineer");
+        driver.findElement(By.name("email")).sendKeys("john@gmail.com");
+
+       int number1= Integer.parseInt(driver.findElement(By.id("numb1")).getText());
+       int number2= Integer.parseInt(driver.findElement(By.id("numb2")).getText());
+       String result= number1+number2+"";
+       driver.findElement(By.id("number")).sendKeys(result);
+
+        //Click on 'SUBMIT'
+
+        driver.findElement(By.id("demo")).click();
+
+       // Assert that the form has been sent
+
+        WebElement thankyou= driver.findElement(By.xpath("//strong[.=' Thank you!']"));
+        assertTrue(thankyou.isEnabled());
+
+    }
+
+}
