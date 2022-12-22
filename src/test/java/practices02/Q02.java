@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+
 public class Q02 extends TestBase {
 
     @Test
@@ -33,7 +35,9 @@ public class Q02 extends TestBase {
 
         //Fill the form
 
-       List<WebElement> inputs=driver.findElements(By.xpath("//input[@"));
+        driver.switchTo().defaultContent();
+
+       List<WebElement> inputs=driver.findElements(By.xpath("//input"));
        List<String> words=new ArrayList<>(Arrays.asList("This","iFrame","example","looks","really","funny","does","not","it","?","!"));
        for(int i=0; i< inputs.size();i++){
            inputs.get(i).sendKeys(words.get(i));
@@ -41,9 +45,12 @@ public class Q02 extends TestBase {
        }
 
         //Press the apply button
+        driver.findElement(By.id("send")).click();
 
 
         // Verify "code" element is displayed
+        WebElement code=driver.findElement(By.id("code"));
+        assertTrue(code.isDisplayed());
 
 
     }
