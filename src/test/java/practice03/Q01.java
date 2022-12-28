@@ -35,5 +35,17 @@ public class Q01 extends TestBase {
         //  Verify they are dropped.
         Assert.assertTrue(driver.findElement(By.linkText("Perfect!")).isDisplayed());
 
+
+        //Drag sources to target:
+//        actions.
+//                dragAndDrop(source1,target1).
+//                dragAndDrop(source2,target2).
+//                dragAndDrop(source3,target3).
+//                dragAndDrop(source4,target4).
+//                build().perform();
+//
+//        //Verify they are dropped.
+//        WebElement perfect = driver.findElement(By.id("equal"));
+//        assertEquals("Perfect!", perfect.getText());
     }
 }
