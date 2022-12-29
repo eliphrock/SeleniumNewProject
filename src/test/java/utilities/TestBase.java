@@ -5,10 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
@@ -54,14 +51,31 @@ public abstract class TestBase {
         Assert.assertTrue(driver.findElement(By.id("result")).getText().contains(textFromList));
     }
 
-    //take screenshot of entire page with this reusable method
+    //    TAKE SCREENSHOT OF ENTIRE PAGE WITH THIS REUSABLE METHOD
     public void takeScreenshotOfPage() throws IOException {
-        //1-take ss using getScreenshotAs method and TakeScreenshot API-coming from selenium
+//        1. Take screenshot using getScreenshotAs method and TakeScreenshot API-coming from selenium
         File image = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        //2- save the ss in a path and save with dynamic name
-        String currentTime=new SimpleDateFormat("yyyyMMhhmmss").format(new Date());//getting the current local date
-        String path=System.getProperty("user.dir")+"/test-output/Screenshots/"+currentTime+ ".png";//where we save the image
+//        2. Creating a PATH and dynamic name for the image
+        String currentTime = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());//getting the current local date and time
+//        path is where we save the screenshot. PROJECT/FOLDER    /FOLDER     /NAME OF IMAGE  .png
+        String path = System.getProperty("user.dir")+"/test-output/Screenshots/"+currentTime+"image.png";//Where we save the image
+
+//        3. Saving the IMAGE in the PATH
         FileUtils.copyFile(image,new File(path));
 
+
     }
+    //take screenshot of specific element
+    public void takeScreenShotOfTheElement(WebElement element) throws IOException {
+        //take screenshot
+       File image= element.getScreenshotAs(OutputType.FILE);
+        //create a dynamic path
+        String currentTime = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());//getting the current local date and time
+//        path is where we save the screenshot. PROJECT/FOLDER    /FOLDER     /NAME OF IMAGE  .png
+        String path = System.getProperty("user.dir")+"/test-output/Screenshots/"+currentTime+"image.png";
+       // Saving the IMAGE in the PATH
+        FileUtils.copyFile(image,new File(path));
+    }
+
+
 }
