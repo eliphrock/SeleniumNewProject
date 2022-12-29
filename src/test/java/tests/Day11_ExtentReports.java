@@ -59,6 +59,20 @@ public class Day11_ExtentReports extends TestBase {
         Assert.assertEquals("LMS LOGIN PAGE IS NOT DISPLAYED",expectedURL,actualURL);
         extentTest.pass("TEST IS COMPLETE");
     }
+
+    @Test
+    public void extentReportsTest2(){
+        //pass is used to mark the step as passed
+        extentTest.pass("PASS");
+        //info is used to just give an information for that step
+        extentTest.info("INFO");
+        //fail is used to mark the step as failed
+        extentTest.fail("FAILED");
+        //skip is used to mark the step as skipped
+        extentTest.skip("SKIPPED");
+        //warning is used to give warning information
+        extentTest.warning("WARNING");
+    }
     @AfterClass
     public static void extentReportsTearDown(){
         //generating the report
