@@ -77,5 +77,15 @@ public abstract class TestBase {
         FileUtils.copyFile(image,new File(path));
     }
 
+    //HARD WAIT:
+    //@param :second
+
+    public static void waitFor(int seconds){
+        try {
+            Thread.sleep(seconds*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
