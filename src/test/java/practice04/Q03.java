@@ -1,3 +1,5 @@
+package practice04;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
