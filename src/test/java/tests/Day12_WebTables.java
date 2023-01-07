@@ -1,5 +1,7 @@
 package tests;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,16 +10,20 @@ import utilities.TestBase;
 import java.util.List;
 
 public class Day12_WebTables extends TestBase {
+    private static Logger logger= LogManager.getLogger(Day12_WebTables.class.getName());
     @Test
     public void printTableData(){
+        logger.info("going to home page");
         driver.get("https://the-internet.herokuapp.com/tables");
 //        Task 1 : Print the entire table
         System.out.println("PRINT ENTIRE TABLE***");
+        logger.info("printing the webtable information");
         String entireTable = driver.findElement(By.xpath("//table[@id='table1']")).getText();
         System.out.println(entireTable);
         List<WebElement> allTableElements = driver.findElements(By.xpath("//table[@id='table1']//td"));
         for (WebElement eachElement : allTableElements){
             System.out.println(eachElement.getText());
+            logger.info(eachElement.getText());
         }
 //        We can get specific cell data
         System.out.println("5th DATA in the table "+allTableElements.get(5).getText());

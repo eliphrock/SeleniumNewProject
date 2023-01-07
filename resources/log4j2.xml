@@ -22,14 +22,16 @@
     <!--    Loggers : logs the information. Logger is used to override Root level
     additivity="false" avoids duplicated messages that can come from parent levels. This should be used with Logger-->
     <Loggers>
-        <Logger name="com.myfirstproject.tests" level="trace" additivity="false">
+
+
+        <Logger name="tests.log4Jtests" level="debug" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="file"/>
         </Logger>
-        <!--      Root : provides level to ALL classes on the project
+        <!--Root : provides level to ALL classes on the project
         By default level = error prints errors and fatal
         level=trace will logs everything-->
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="file"/>
         </Root>
