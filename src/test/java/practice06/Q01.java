@@ -1,5 +1,6 @@
 package practice06;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class Q01 {
 
@@ -47,5 +50,11 @@ public class Q01 {
         }
         FileOutputStream fileOutputStream=new FileOutputStream(path);
         workbook.write(fileOutputStream);
+
+        //assert that row number of wendsay is 1
+       // assertEquals("1.0",sheet1.getRow(3).getCell(2).toString());
+
+        Cell cell=sheet1.getRow(3).getCell(2);
+        assertEquals("1.0",cell.toString());
     }
 }
